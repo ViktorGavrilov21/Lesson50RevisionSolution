@@ -11,3 +11,29 @@
 // 
 // Далее необходимо разработать полноценный или тестовый проект для полной 
 // демонстрации работоспособности данной функции.
+#include "logic.h"
+
+double calculate_average(double array[], int size) {
+	double avg = 0;
+	for (int i = 0; i < size; i++) {
+		avg += array[i];
+	}
+	return avg / size;
+}
+
+double count_float_sum(double array[], int size) {
+	if (size <= 0 || size > DEFAULT_SIZE) {
+		return -1;
+	}
+
+	double sum = 0;
+
+	for (int i = 0; i < size; i++) {
+		int abs = array[i] < 0 ? -array[i] : array[i];
+		if (array[i] < calculate_average(array, size)) {
+			sum += abs;
+		}
+	}
+
+	return sum;
+}
