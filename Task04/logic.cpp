@@ -8,19 +8,24 @@
 // Дополнительно в функции необходимо предусмотреть механизм "защиты от дурака"
 // для работы с некорректными данными.
 #include "logic.h"
+
+// 1 1 2 4 9 8 9 6
+// 1 9 2 4 9 8 1 6
+
 int find_min_index(int array[], int size) {
-	int min = array[0];
-	for (int i = 1; i < size; i) {
-		if (min > array[i]) {
+	int min = 0;
+	for (int i = 1; i < size; i++) {
+		if (array[min] >= array[i]) {
 			min = i;
 		}
 	}
 	return min;
 }
+
 int find_max_index(int array[], int size) {
-	int max = array[0];
-	for (int i = 1; i < size; i) {
-		if (max < array[i]) {
+	int max = 0;
+	for (int i = 1; i < size; i++) {
+		if (array[max] <= array[i]) {
 			max = i;
 		}
 	}
@@ -28,6 +33,10 @@ int find_max_index(int array[], int size) {
 }
 
 void swap_extrem_elements(int array[], int size) {
+	if (size <= 0) {
+		return;
+	}
+
 	int min_index = find_min_index(array, size);
 	int max_index = find_max_index(array, size);
 
