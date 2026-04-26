@@ -10,5 +10,18 @@
 #include "logic.h"
 
 bool is_the_same_elements(int array[], int size) {
+	if (size <= 0 || size > DEFAULT_SIZE) {
+		return false;
+	}
+
+	for (int i = 0; i < size - 1; i++) {
+		int num = array[i];
+		for (int j = i + 1; j < size; j++) {
+			if (num == array[j]) {
+				return true;
+			}
+		}
+	}
+
 	return false;
 }
